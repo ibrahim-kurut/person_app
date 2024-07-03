@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # TPA
     'rest_framework',
+
+    # My Apps
+    'person',
 ]
 
 MIDDLEWARE = [
