@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Department, Person
-
+from datetime import datetime, timezone
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,3 +25,16 @@ class PersonSerializer(serializers.ModelSerializer):
     department_name = serializers.SerializerMethodField()
     def get_department_name(self, obj):
             return obj.department.name
+
+
+    # Know the number of working days
+    days_since_employment = serializers.SerializerMethodField()
+    def get_days_since_employment(self, obj):
+        today = datetime.now(timezone.utc)
+        days_since_start = (today - obj.start_date).days
+        return f"{days_since_start} days"
+
+        
+    
+
+    
