@@ -32,4 +32,9 @@ class DepartmentViewSet(ModelViewSet):
 class PersonViewSet(ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+    '''
+        Adding permissions to Department so that only the admin can deal with them
+        Only other users can see the Department
+    '''
+    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
 
