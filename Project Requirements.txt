@@ -1,0 +1,25 @@
+Person App Project:
+
+1- Personel bilgilerini tutan bir tablo olucak ve fieldlari;
+- first_name
+- last_name
+- title : title field`inda CHOİCES kullanin (Team Lead - Mid Lead - Junior)
+- gender: gender field`inda CHOİCES kullanin
+- salary
+- start_date
+- departman: personel tablosu ve departman tablosunda uygun olan ilişki kurulacak;  ForeignKey - ManyToMany - OneToOne
+- user: personel toblosu ile user tablosu arasinda uygun ilişki kurulacak ForeignKey - ManyToMany - OneToOne, burdaki user`i insan kaynaklarindaki personel bilgilerini giren kişi olarak düşünmeniz gerekmektedir. User bilgisi authenticated`a kullanidiğim user tablosu olduğunu unutmayin.
+
+2- Departman bilgilerini tutan bir tablo olucak ve fieldlari;
+-name
+
+3 - Herhangi bir departmanda toplam kaç kişi olduğunu hesaplayan bir method tanimlanmasi gerekmektedir.
+
+4 - Personelin işe giriş tarihinden günümüz tarihine kadar geçen süreyi hesaplayan bir method tanimlanmasi gerekmektedir.
+
+5-  Personel oluşturulurken user`a ait token ile işlem yapilmali ve otomatik olarak user_id bilgisine ulaşmak için override yapilmali.
+
+
+6- Departman tablosunda GET - POST - PUT - DELETE HTTP methodlarini admin yapabilecek yani is_staff özelliği True olan kişiler yapabilecek onun haricinde authenticated olmuş yani sisteme login olan kullanicilar sadece departman tablosunda yazan bilgileri GET işlemi uygulayabilecek.
+
+7- Personel tablosunda personel için GET - POST - PUT - DELETE HTTP methodlarini admin yapabilecek yani is_staff özelliği True olan kişiler yapabilecek onun haricinde authenticated olmuş yani sisteme login olan kullanicilar sadece personel tablosunda yazan bilgileri GET işlemi uygulayabilecek.
