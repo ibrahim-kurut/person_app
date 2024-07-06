@@ -2,11 +2,15 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 
 # Create your views here.
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
-from .serializers import RegisterSerializer
+
+from .serializers import RegisterSerializer, UserSerializer
+
+from .permissions import IsAdminOnly
 
 
 class Register(CreateAPIView):
@@ -32,6 +36,11 @@ class Register(CreateAPIView):
                 status=status.HTTP_201_CREATED, headers=headers
                 )
 
+# get all users
+class Users(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated, IsAdminOnly]
 
 
     
