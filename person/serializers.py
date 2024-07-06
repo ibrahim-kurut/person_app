@@ -14,6 +14,10 @@ class DepartmentSerializer(serializers.ModelSerializer):
             return obj.person_set.count()
 
 class PersonSerializer(serializers.ModelSerializer):
+    # add user name who created the user
+    username = serializers.ReadOnlyField(source='user.username')
+
+
     class Meta:
         model = Person
         fields = "__all__"

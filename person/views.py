@@ -38,3 +38,18 @@ class PersonViewSet(ModelViewSet):
     '''
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
 
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        # Add user ID who created the user
+        serializer.save(user=request.user)
+        print("user--------------> " , request.user)
+  
+        return Response({
+            'message': 'Person created successfully',
+            'data': serializer.data
+        }, status=status.HTTP_201_CREATED)
+
+
